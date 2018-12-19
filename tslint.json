@@ -1,0 +1,22 @@
+{
+  "extends": [
+    "tslint:latest",
+    "tslint-eslint-rules",
+    "tslint-config-prettier",
+    "tslint-plugin-prettier"
+  ],
+  "rules": {
+    "prettier": [true, {
+      "singleQuote": true,
+      "tabWidth": 2,
+      "semi": true,
+      "trailingComma": "all",
+      "endOfLine": "lf",
+      "printWidth": 120
+    }],
+    "member-access": [true, "no-public"],
+    "no-console": false,
+    "interface-name": false,
+    "ordered-imports": [true]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es2017"],
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "Node",
+    "baseUrl": ".",
+    "sourceMap": true
+  },
+  "include": [
+    "src"
+  ]
+}
