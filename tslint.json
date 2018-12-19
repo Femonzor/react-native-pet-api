@@ -17,6 +17,13 @@
     "member-access": [true, "no-public"],
     "no-console": false,
     "interface-name": false,
-    "ordered-imports": [true]
+    "ordered-imports": [true],
+    "no-empty": [true, "allow-empty-functions"],
+    "ban-types": [true,
+      ["String", "Use 'string' instead."],
+      ["Boolean", "Use 'boolean' instead."],
+      ["Number", "Use 'number' instead."],
+      ["Object", "Use 'object' instead."]
+    ]
   }
 }

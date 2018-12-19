@@ -34,6 +34,7 @@
     "@types/koa": "^2.0.47",
     "@types/koa-bodyparser": "^4.2.1",
     "@types/koa-logger": "^3.1.1",
+    "@types/koa-router": "^7.0.35",
     "@types/koa-session": "^5.7.4",
     "nodemon": "^1.18.9",
     "prettier": "^1.15.3",
