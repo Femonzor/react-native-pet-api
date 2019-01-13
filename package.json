@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node ./src/app.ts"
+    "dev": "nodemon --watch 'src/**/*.ts' --exec ts-node ./src/app.ts"
   },
   "repository": {
     "type": "git",
@@ -31,11 +31,13 @@
     "xss": "^1.0.3"
   },
   "devDependencies": {
+    "@types/bluebird": "^3.5.25",
     "@types/koa": "^2.0.47",
     "@types/koa-bodyparser": "^4.2.1",
     "@types/koa-logger": "^3.1.1",
     "@types/koa-router": "^7.0.35",
     "@types/koa-session": "^5.7.4",
+    "@types/mongoose": "^5.3.5",
     "nodemon": "^1.18.9",
     "prettier": "^1.15.3",
     "ts-node": "^7.0.1",
