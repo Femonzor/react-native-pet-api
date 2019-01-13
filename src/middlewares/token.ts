@@ -8,7 +8,7 @@ export default async (ctx: Koa.Context, next: Function) => {
       code: 4,
       message: 'token 错误',
     };
-    return next();
+    return;
   }
   const user = await User.findOne({
     accessToken,
@@ -16,9 +16,10 @@ export default async (ctx: Koa.Context, next: Function) => {
   if (!user) {
     ctx.body = {
       code: 5,
-      message: '用户未登录',
+      message: 'token 错误',
     };
-    return next();
+    return;
   }
   ctx.session.user = user;
+  await next();
 };

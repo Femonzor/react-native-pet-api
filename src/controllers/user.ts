@@ -1,6 +1,5 @@
 import Koa from 'koa';
 import uuid from 'uuid';
-import xss from 'xss';
 import User from '../models/user';
 
 const signup = async (ctx: Koa.Context, next: Function) => {
@@ -20,7 +19,7 @@ const signup = async (ctx: Koa.Context, next: Function) => {
       accessToken: uuid.v4(),
       avatar: 'http://dummyimage.com/640x640/bbf279',
       nickname: `用户${phoneNumber}`,
-      phoneNumber: xss(phoneNumber),
+      phoneNumber,
       verifyCode: '111111',
     });
   } else {
@@ -78,7 +77,6 @@ const verify = async (ctx: Koa.Context, next: Function) => {
 
 const update = async (ctx: Koa.Context, next: Function) => {
   const body = ctx.request.body;
-  const { accessToken } = body;
   let user = ctx.session.user;
   const fileds = 'avatar,gender,age,nickname,breed'.split(',');
   fileds.forEach(field => {
