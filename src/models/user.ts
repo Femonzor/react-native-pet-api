@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 interface IUser extends mongoose.Document {
   accessToken: string;
-  age: string;
+  age: number;
   areaCode: string;
   avatar: string;
   breed: string;
@@ -16,12 +16,13 @@ interface IUser extends mongoose.Document {
     type: number;
     unique: true;
   };
+  verified: boolean;
   verifyCode: string;
 }
 
 const UserSchema = new mongoose.Schema({
   accessToken: String,
-  age: String,
+  age: Number,
   areaCode: String,
   avatar: String,
   breed: String,
@@ -38,8 +39,12 @@ const UserSchema = new mongoose.Schema({
   },
   nickname: String,
   phoneNumber: {
-    type: String,
+    type: Number,
     unique: true,
+  },
+  verified: {
+    default: false,
+    type: Boolean,
   },
   verifyCode: String,
 });
