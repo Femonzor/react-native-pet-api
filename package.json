@@ -38,6 +38,7 @@
     "@types/koa-router": "^7.0.35",
     "@types/koa-session": "^5.7.4",
     "@types/mongoose": "^5.3.5",
+    "@types/sha1": "^1.1.1",
     "@types/uuid": "^3.4.4",
     "nodemon": "^1.18.9",
     "prettier": "^1.15.3",

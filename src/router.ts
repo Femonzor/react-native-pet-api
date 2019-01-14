@@ -9,7 +9,6 @@ export default (() => {
     prefix: '/api',
   });
   router.post('/user/signup', body, user.signup);
-  // router.post('/user/signup', user.signup);
   router.post('/user/verify', body, user.verify);
   router.post('/user/update', body, token, user.update);
   router.post('/signature', body, token, auth.signature);
