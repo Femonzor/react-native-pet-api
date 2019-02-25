@@ -1,6 +1,7 @@
 import Router from 'koa-router';
 import auth from './controllers/auth';
 import user from './controllers/user';
+import video from './controllers/video';
 import body from './middlewares/body';
 import token from './middlewares/token';
 
@@ -12,5 +13,6 @@ export default (() => {
   router.post('/user/verify', body, user.verify);
   router.post('/user/update', body, token, user.update);
   router.post('/signature', body, token, auth.signature);
+  router.post('/videos', body, token, video.create);
   return router;
 })();
