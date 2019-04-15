@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --watch 'src/**/*.ts' --exec ts-node ./src/app.ts"
+    "dev": "nodemon --watch 'src/**/*.ts' --exec ts-node ./src/app.ts",
+    "debug": "ts-node --inspect ./src/app.ts"
   },
   "repository": {
     "type": "git",
