@@ -1,5 +1,6 @@
 import Koa from 'koa';
 import sha1 from 'sha1';
+import uuid from 'uuid';
 import config from '../config';
 
 const signature = async (ctx: Koa.Context, next: Function) => {
@@ -11,7 +12,7 @@ const signature = async (ctx: Koa.Context, next: Function) => {
     folder = 'react-native-pet/avatar';
     tags = 'app,avatar';
   } else if (type === 'video') {
-    folder = 'react-native-pet/video';
+    folder = 'react-native-pet/mute-video';
     tags = 'app,video';
   } else if (type === 'audio') {
     folder = 'react-native-pet/audio';
@@ -20,7 +21,10 @@ const signature = async (ctx: Koa.Context, next: Function) => {
   const sign = sha1(`folder=${folder}&tags=${tags}&timestamp=${timestamp}${config.cloudinary.api_secret}`);
   ctx.body = {
     code: 0,
-    data: sign,
+    data: {
+      key: uuid.v4(),
+      token: sign,
+    },
     message: 'success',
   };
 };

@@ -5,6 +5,7 @@ const create = async (ctx: Koa.Context, next: Function) => {
   const body = ctx.request.body;
   const videoData = JSON.parse(body.video);
   const user = ctx.session.user;
+  console.log(videoData);
 
   if (!videoData) {
     ctx.body = {
