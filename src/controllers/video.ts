@@ -24,6 +24,7 @@ const create = async (ctx: Koa.Context, next: Function) => {
     console.log(`publicId: ${videoData.public_id}`);
     video = new Video({
       author: user._id,
+      detail: videoData,
       publicId: videoData.public_id,
     });
     video = await video.save();

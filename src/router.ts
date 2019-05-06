@@ -1,4 +1,5 @@
 import Router from 'koa-router';
+import audio from './controllers/audio';
 import auth from './controllers/auth';
 import user from './controllers/user';
 import video from './controllers/video';
@@ -14,5 +15,6 @@ export default (() => {
   router.post('/user/update', body, token, user.update);
   router.post('/signature', body, token, auth.signature);
   router.post('/videos', body, token, video.create);
+  router.post('/audios', body, token, audio.create);
   return router;
 })();
