@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Femonzor/react-native-pet-api#readme",
   "dependencies": {
     "bluebird": "^3.5.3",
+    "cloudinary": "^1.14.0",
     "koa": "^2.6.2",
     "koa-bodyparser": "^4.2.1",
     "koa-logger": "^3.2.0",

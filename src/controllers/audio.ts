@@ -1,13 +1,13 @@
 import Koa from 'koa';
 import Audio from '../models/audio';
 import Video from '../models/video';
+import { asyncMedia } from '../utils';
 
 const create = async (ctx: Koa.Context, next: Function) => {
   const body = ctx.request.body;
   const audioData = JSON.parse(body.audio);
   const videoId = body.videoId;
   const user = ctx.session.user;
-  console.log(audioData);
 
   if (!audioData || !audioData.public_id) {
     ctx.body = {
@@ -37,6 +37,9 @@ const create = async (ctx: Koa.Context, next: Function) => {
     audio = new Audio(tempAudio);
     audio = await audio.save();
   }
+
+  console.log('合成媒体');
+  asyncMedia(video, audio);
 
   ctx.body = {
     code: 0,

@@ -5,7 +5,6 @@ const create = async (ctx: Koa.Context, next: Function) => {
   const body = ctx.request.body;
   const videoData = JSON.parse(body.video);
   const user = ctx.session.user;
-  console.log(videoData);
 
   if (!videoData) {
     ctx.body = {
@@ -20,8 +19,6 @@ const create = async (ctx: Koa.Context, next: Function) => {
   }).exec();
 
   if (!video) {
-    console.log(`userId: ${user._id}`);
-    console.log(`publicId: ${videoData.public_id}`);
     video = new Video({
       author: user._id,
       detail: videoData,
