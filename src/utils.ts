@@ -43,9 +43,9 @@ export const asyncMedia = (video: any, audio: any) => {
   const videoPublicId = video.publicId;
   const audioPublicId = audio.publicId.replace(/\//g, ':');
   const videoName = `${videoPublicId.replace(/\//g, '_')}.mp4`;
-  const videoUrl = `http://res/cloudinary.com/yang/video/upload/e_volume:-100/e_volume:400,l_video:${audioPublicId}/${videoPublicId}.mp4`;
+  const videoUrl = `http://res.cloudinary.com/yang/video/upload/e_volume:-100/e_volume:400,l_video:${audioPublicId}/${videoPublicId}.mp4`;
   const thumbName = `${videoPublicId.replace(/\//g, '_')}.jpg`;
-  const thumbUrl = `http://res/cloudinary.com/yang/video/upload/${videoPublicId}.jpg`;
+  const thumbUrl = `http://res.cloudinary.com/yang/video/upload/${videoPublicId}.jpg`;
   console.log(`videoPublicId:${videoPublicId}`);
   console.log(`audioPublicId:${audioPublicId}`);
   console.log(`videoName:${videoName}`);

@@ -20,15 +20,13 @@ const create = async (ctx: Koa.Context, next: Function) => {
   }).exec();
 
   if (!video) {
-    const url = `http://res.cloudinary.com/yang/video/upload/e_volume:-100/${videoData.public_id}.${videoData.format}`;
-    console.log(`url: ${url}`);
+    // const url = `http://res.cloudinary.com/yang/video/upload/e_volume:-100/${videoData.public_id}.${videoData.format}`;
     try {
-      const result = await uploadToCloudinary(url, 'mute-video', videoData.public_id);
-      console.log(result);
+      // const result = await uploadToCloudinary(url, 'mute-video', videoData.public_id);
       video = new Video({
         author: user._id,
-        detail: result,
-        publicId: result.public_id,
+        detail: videoData,
+        publicId: videoData.public_id,
       });
       video = await video.save();
       ctx.body = {
