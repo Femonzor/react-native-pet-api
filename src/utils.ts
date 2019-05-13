@@ -3,24 +3,32 @@ import config from './config';
 // tslint:disable-next-line:no-var-requires
 const cloudinary = require('cloudinary').v2;
 
-cloudinary.config(config.cloudinary);
+cloudinary.config({
+  api_key: config.cloudinary.api_key,
+  api_secret: config.cloudinary.api_secret,
+  cloud_name: config.cloudinary.cloud_name,
+});
 
-const uploadToCloudinary = (url: string) => {
+export const uploadToCloudinary = (url: string, folder: string, publicId?: string): any => {
+  const type = /video/g.test(folder) ? 'video' : 'audio';
+  folder = `react-native-pet/${folder}`;
+  const option: any = {
+    resource_type: type,
+    tags: ['app', type],
+  };
+  if (publicId) {
+    option.public_id = publicId;
+  } else {
+    option.folder = folder;
+  }
   return new bbPromise((resolve, reject) => {
-    cloudinary.uploader.upload(
-      url,
-      {
-        folder: 'react-native-pet/video',
-        resoruce_type: 'video',
-      },
-      (error: any, result: any) => {
-        if (result && result.public_id) {
-          resolve(result);
-        } else {
-          reject(error);
-        }
-      },
-    );
+    cloudinary.uploader.upload(url, option, (error: any, result: any) => {
+      if (result && result.public_id) {
+        resolve(result);
+      } else {
+        reject(error);
+      }
+    });
   });
 };
 
@@ -45,7 +53,7 @@ export const asyncMedia = (video: any, audio: any) => {
   console.log(`thumbName:${thumbName}`);
   console.log(`thumbUrl:${thumbUrl}`);
 
-  uploadToCloudinary(videoUrl)
+  uploadToCloudinary(videoUrl, 'video')
     .then(data => {
       console.log('promise data');
       console.log(data);
